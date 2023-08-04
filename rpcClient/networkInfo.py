@@ -4,11 +4,12 @@ import json
 class NetworkInfo:
     def __init__(self):
         self.users = {}
+        self.get_public_ip()
 
     def get_client_information(self,ip):
         try:
             res = DbIpCity.get(ip, api_key="free")
-            print(f"IP Address: {res.ip_address}")
+            # print(f"IP Address: {res.ip_address}")
             self.users=json.loads(res.ip_address)
             if self.users['ip'] is None:
                 raise Exception('Data not valid')

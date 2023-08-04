@@ -1,6 +1,6 @@
 import pika
 
-class Rpcserver:
+class RpcServer:
     def __init__(self):
         self.connection = pika.BlockingConnection(
             pika.ConnectionParameters(host='localhost')
@@ -9,9 +9,8 @@ class Rpcserver:
         self.channel.queue_declare(queue='rpc_queue')
 
     def on_request(self,ch,method,props,body):
-        n = int(body)
-        print(n)
-        response=n
+        client_info = body
+        response=client_info
         ch.basic_publish(exchange='',
         routing_key=props.reply_to,
         properties = pika.BasicProperties(correlation_id=props.correlation_id),
