@@ -1,15 +1,17 @@
 import pika
 from ast import literal_eval
-from channels import Channels
-class RpcServer(Channels):
-    def __init__(self):
+
+class RpcServer:
+    def __init__(self,default_queue=''):
         super().__init__()
+        self.default_queue = default_queue
         self.connection = pika.BlockingConnection(
             pika.ConnectionParameters(host='localhost')
         )
-        for i in self.default_queue:
-            self.channel = self.connection.channel()
-            self.channel.queue_declare(queue=i)
+        self.channel = self.connection.channel()
+        self.channel.queue_declare(queue=self.default_queue)
+        self.prompt_init()
+
 
     def check_client_info(self,client_info):
         client_info = literal_eval(client_info.decode('utf-8'))
@@ -19,7 +21,6 @@ class RpcServer(Channels):
         else: return False
 
     def on_request(self,ch,method,props,body):
-        queue=method.routing_key
         client_info_flag = self.check_client_info(body)
         if client_info_flag is True:
             response=self.default_queue
@@ -27,13 +28,12 @@ class RpcServer(Channels):
             routing_key=props.reply_to,
             properties = pika.BasicProperties(correlation_id=props.correlation_id),
             body=str(response))
-            self.update_channel(queue)
             ch.basic_ack(delivery_tag=method.delivery_tag)
         else:
             raise Exception("this Client not authorized!!!")
 
-    def prompt_init(self,queue):
+    def prompt_init(self):
         self.channel.basic_qos(prefetch_count=1)
-        self.channel.basic_consume(queue=queue,on_message_callback=self.on_request)
+        self.channel.basic_consume(queue=self.default_queue,on_message_callback=self.on_request)
         print(" [x] Awaiting RPC requests")
         self.channel.start_consuming()
