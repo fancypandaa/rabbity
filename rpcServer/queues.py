@@ -1,7 +1,7 @@
 class Queues:
     def __init__(self):
         super().__init__()
-        self.default_queues=["galaxy","mars","sheep","spider","zero"]
+        self.default_queues=["galaxy","serpent","sheep","spider","zero"]
 
     def check_queue(self,queue):
         if queue in self.default_queues:
@@ -13,5 +13,5 @@ class Queues:
         print("QUEUES DETAILS")
         print("================")
         print("galaxy:","Search for host IP for any website")
-        print("mars:","Convert Search query to a high accuracy query")
+        print("serpent:","Serpent should be chosen because it is the most secure of the AES finalists.😎")
 
