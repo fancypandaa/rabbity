@@ -1,4 +1,4 @@
-import helper as help_functions
+from . import helper as help_functions
 
 class Observer:
     """An object of this class can selectively display the values of the

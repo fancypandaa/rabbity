@@ -1,7 +1,7 @@
 
-import helper as helper_functions
-import serpent as normal_serpent
-import serpent_ctr as ctr_serpent
+from . import helper as helper_functions
+from . import serpent as normal_serpent
+from . import serpent_ctr as ctr_serpent
 
 import time as time
 
