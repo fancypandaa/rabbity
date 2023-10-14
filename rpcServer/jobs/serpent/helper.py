@@ -2,7 +2,7 @@ import sys
 import re
 import random
 
-import constants as constants_values
+from . import constants as constants_values
 
 
 def convert_binary_to_decimal(binary): 
@@ -53,19 +53,7 @@ def chunk_cipher_into_128bit(cipher_message):
         bits.append(sub_cipher)
     return bits
 
-def normal_serpent_encrypt(chunk_messages,user_key):
-    cipher_message=""
-    for plain_text in chunk_messages:
-        plain_text = replace_space_with_zero(plain_text)
-        plain_text=convert_string_to_binary(plain_text)
-        cipher_message += normal_serpent.encrypt(plain_text, help_functions.convertToBitstring(user_key, 256))
-    return cipher_message
 
-def normal_serpent_decrypt(cipher_messages,user_key):
-    plain_text=""
-    for cipher_text in cipher_messages:
-        plain_text += normal_serpent.decrypt(cipher_text, help_functions.convertToBitstring(user_key, 256))
-    return plain_text
 
 def key_gen(size=32):
     key = ''
@@ -703,3 +691,4 @@ def helpExit(message = None):
     if message:
         print ("ERROR:", message)
     sys.exit()
+
