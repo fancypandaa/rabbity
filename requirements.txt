@@ -1,0 +1,6 @@
+python3-nmap
+matplotlib
+networkx
+ip2geotools
+pika
+cryptography
