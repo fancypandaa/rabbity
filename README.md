@@ -3,7 +3,8 @@
 
 Rabbity is a collection of modern cryptography algorithms of complex algorithms and unpopular techniques.
 
-![alt text] (https://github.com/fancypandaa/rabbity/blob/intro/rabbity.png)
+
+![--rabbity header] (https://github.com/fancypandaa/rabbity/blob/intro/rabbity.png)
 
 Introduction
 -----------
@@ -12,7 +13,7 @@ Work by RPC technology using Rabbitmq.
 
 Architecture
 -----------
-![alt text] (https://github.com/fancypandaa/rabbity/blob/intro/Untitled%20Diagram.drawio.png)
+![] (https://github.com/fancypandaa/rabbity/blob/intro/Untitled%20Diagram.drawio.png)
 
 rabbity approach is a decouple structure, which means you can run any algorithm individually,
 the design depends on every client representing only one crypto algorithm you choose it from the beginning,
