@@ -1,7 +1,7 @@
 class Queues:
     def __init__(self):
         super().__init__()
-        self.default_queues=["galaxy","serpent","sheep","spider","zero"]
+        self.default_queues=["ecdsa","serpent"]
 
     def check_queue(self,queue):
         if queue in self.default_queues:

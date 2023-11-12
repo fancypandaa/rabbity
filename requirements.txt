@@ -4,3 +4,6 @@ networkx
 ip2geotools
 pika
 cryptography
+
+ # https://www.youtube.com/watch?v=6FlK3AZTz5k
+    # https://curves.xargs.org/

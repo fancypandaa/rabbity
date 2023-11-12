@@ -4,7 +4,7 @@ from ast import literal_eval
 from networkInfo import NetworkInfo
 import ipaddress  
 from jobs.serpent_creator import SerpentCreator
-
+from jobs.ecdsa_creator import ECDSACreator
 class RpcClient(NetworkInfo):
     def __init__(self,default_queue='galaxy'):
         super().__init__()
@@ -35,9 +35,9 @@ class RpcClient(NetworkInfo):
             
     def user_input(self,default_queue):
         plain_text=""
-        if default_queue == 'galaxy':
-            print("Enter URI you want find it? ")
-            s = input()
+        if default_queue == 'ecdsa':
+            self.ecdsa = ECDSACreator(self.users) 
+            self.users = self.ecdsa.user_input()
         elif default_queue == 'serpent':
             self.serpent = SerpentCreator(self.users)
             self.users = self.serpent.user_input()
