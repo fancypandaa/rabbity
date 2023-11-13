@@ -20,7 +20,10 @@ class SerpentCreator:
             exit()
             # print(self.users)
         return self.users
- 
+    def check_key_length(self,key):
+        x = x.split()
+        return len(x)
+    
     def check_plain_text_length(self,plain_text):
         x = plain_text.split()
         number_of_words= len(x)
@@ -46,6 +49,10 @@ class SerpentCreator:
                     self.users["auto_generate_key"]=True
                 elif user_key_option.lower() == "n":
                     user_key = input("Enter Your Key between 128bit and 256bit")
+                    key_len = self.check_key_length(user_key)
+                    if key_len != 16:
+                        print("wrong length...")
+                        exit()
                     self.users["auto_generate_key"]=False
                     self.users["user_key"]= user_key
                 else:

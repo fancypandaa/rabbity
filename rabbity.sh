@@ -34,8 +34,8 @@ echo "     ▀█          ▀█              █▀          █▀ "
 echo "       █           █            █           █"
 echo "        █          █▀▀▀▀▀▀▀▀▀▀▀▀█          █" 
 echo "        ▀█                               █▀    I- launch server(s)" 
-echo "         █        ▀               ▀      █     II- mar's client"
-echo "        █▀         ▀             ▀       ▀█    III- galaxy client" 
+echo "         █        ▀               ▀      █     II- serpent client"
+echo "        █▀         ▀             ▀       ▀█    III- ECDSA client" 
 echo "      █▀        ███ ▀           ▀ ███     ▀█   IV- others"
 echo "    █▀         █   █     ██      █   █     ▀█  V- close the door"
 echo "   █	        ▀▀▀	 	  ▀▀▀        █"
@@ -44,4 +44,29 @@ echo "    █	           ████████	            █"
 echo "    ██         	    ██		           ██"
 echo "     ███                                 ███"
 echo "        █████████████████████████████████ "
+read -p ":> " 
+sleep 1
+clear
+if [[ "$REPLY" == 'I' ]]; then
+    source env/bin/activate
+    
+    echo "choose job from? [s/g]: "
+    read job
+    case "$job" in 
+	    S|s) source env/bin/activate ; cd rpcServer ; python3 args.py -q "serpent"
+		 ;;
+	    G|g) source env/bin/activate ; cd rpcServer ; python3 args.py -q 'galaxy'
+		 ;;
+	    *)   exit
+		 ;;
+    esac
+elif [[ "$REPLY" == 'II' ]]; then
+	 . env/bin/activate ; cd rpcClient ; python3 args.py -o "serpent"
+elif [[ "$REPLY" == 'III' ]]; then
+	 echo "'$REPLY'"
+elif [[ "$REPLY" == 'IV' ]]; then
+	 echo "'$REPLY'"
+else
+	exit
+fi
 

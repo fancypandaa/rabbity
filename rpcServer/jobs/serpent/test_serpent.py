@@ -9,7 +9,7 @@ from . import observer as observer
 class Serpent:
     def  __init__(self):
         super().__init__()
-        print("Serpent Stay Safe or whatever????")
+        print("Serpent Job online ....???")
         self.args = []
         self.opts = [()]
 

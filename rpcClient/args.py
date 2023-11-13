@@ -7,7 +7,7 @@ parser.add_argument('--option','-o',type=str)
 args = parser.parse_args()
 
 if args.option:
-    default_queues=["galaxy","serpent","sheep","spider","zero"]
+    default_queues=["ecdsa","serpent","sheep","spider","zero"]
     if args.option in default_queues:
         server = RpcClient(args.option)
     else:
